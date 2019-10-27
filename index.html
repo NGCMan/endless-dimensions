@@ -11,6 +11,7 @@ document.getElementById("demo").innerHTML = "You have " + antiMatter + " antimat
 function gameLoop() {
 antiMatter = antiMatter + (amPerSecond / 10);
 }
+setInterval(gameLoop,100);
 </script>
 </head>
 <body>
