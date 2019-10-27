@@ -3,14 +3,18 @@
 <head>
 <script>
 var antiMatter = 10;
+var firstDimensionAmount = 0;
 var amPerSecond = 0;
-function gainAntimatter() {
-antiMatter++;
-
+function buyFirstDimension() {
+if (antiMatter>9.999) {
+antiMatter = antiMatter - 10
+firstDimensionAmount++
+}
 }
 function gameLoop() {
 antiMatter += amPerSecond/20;
 document.getElementById("demo").innerHTML = "You have " + antiMatter + " antimatter.";
+amPerSecond = firstDimensionAmount
 }
 setInterval(gameLoop,50);
 </script>
@@ -18,6 +22,6 @@ setInterval(gameLoop,50);
 <body>
 <h1>antimatter dimensions</h1>
 <p id="demo">You have 10 antimatter.</p>
-<button type="button" onclick="gainAntimatter()">gain 1 antimatter</button>
+<button type="button" onclick="buyFirstDimension()">Buy a first dimension. Cost: 10 Antimatter</button>
 </body>
 </html>
