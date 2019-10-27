@@ -19,9 +19,7 @@ firstDimensionAmount++
 }
 function gameLoop() {
 antiMatter += amPerSecond/20;
-antiMatter = antiMatter * 10
-antiMatter -= antiMatter % 1
-antiMatter = antiMatter/10
+antiMatter = round(antiMatter);
 document.getElementById("demo").innerHTML = "You have " + antiMatter + " antimatter.";
 amPerSecond = firstDimensionAmount
 }
