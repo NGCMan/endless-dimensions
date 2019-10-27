@@ -19,15 +19,16 @@ firstDimensionAmount++
 }
 function gameLoop() {
 antiMatter += amPerSecond/20;
-  document.getElementById("demo").innerHTML = "You have " + Math.round(antiMatter*10)/10 + " antimatter.";
+  document.getElementById("AntimatterAmount").innerHTML = "You have " + Math.round(antiMatter*10)/10 + " antimatter.";
 amPerSecond = firstDimensionAmount
+  document.getElementById("FirstDimAmount").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions.";
 }
 setInterval(gameLoop,50);
 </script>
 </head>
 <body>
 <h1>Endless Dimensions</h1>
-<p id="demo">You have 10 antimatter.</p>
+<p id="AntimatterAmount">You have 10 antimatter.</p>
 <button type="button" onclick="buyFirstDimension()">Buy a first dimension. Cost: 10 Antimatter</button>
 </body>
 </html>
