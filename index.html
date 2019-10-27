@@ -3,9 +3,13 @@
 <head>
 <script>
 var antiMatter = 10;
+var amPerSecond = 0;
 function gainAntimatter() {
 antiMatter++;
 document.getElementById("demo").innerHTML = "You have " + antiMatter + " antimatter.";
+}
+function gameLoop() {
+antiMatter = antiMatter + (amPerSecond / 10);
 }
 </script>
 </head>
