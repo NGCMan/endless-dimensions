@@ -9,7 +9,7 @@ antiMatter++;
 document.getElementById("demo").innerHTML = "You have " + antiMatter + " antimatter.";
 }
 function gameLoop() {
-antiMatter = antiMatter + (amPerSecond / 10);
+antiMatter += amPerSecond/10;
 }
 setInterval(gameLoop,100);
 </script>
