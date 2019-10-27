@@ -6,10 +6,11 @@ var antiMatter = 10;
 var amPerSecond = 0;
 function gainAntimatter() {
 antiMatter++;
-document.getElementById("demo").innerHTML = "You have " + antiMatter + " antimatter.";
+
 }
 function gameLoop() {
 antiMatter += amPerSecond;
+document.getElementById("demo").innerHTML = "You have " + antiMatter + " antimatter.";
 }
 setInterval(gameLoop,1000);
 </script>
