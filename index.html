@@ -41,10 +41,12 @@ secondDimensionBought++
 }
 if(secondDimensionBought=9) {
 secondDimensionBought=0
-secondDimensionCost=secondDimensionCost*10
+secondDimensionCost=secondDimensionCost*100
 secondDimensionMultiplier *= 2
 }
 }
+}
+
 function gameLoop() {
 antiMatter += amPerSecond/20;
   document.getElementById("AntimatterAmount").innerHTML = "You have " + Math.round(antiMatter*10)/10 + " antimatter.";
