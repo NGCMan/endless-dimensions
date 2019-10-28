@@ -33,9 +33,6 @@ firstDimensionMultiplier *= 2;
 }
 }
   function buySecondDimension() {
-if (Math.round(antiMatter)>secondDimensionCost-1) {
-antiMatter = antiMatter - secondDimensionCost
-secondDimensionAmount++
 if (secondDimensionBought<9)
 secondDimensionBought++
 }
@@ -46,6 +43,9 @@ secondDimensionMultiplier *= 2
 }
 }
 }
+if (Math.round(antiMatter)>secondDimensionCost-1) {
+antiMatter = antiMatter - secondDimensionCost
+secondDimensionAmount++
 
 function gameLoop() {
 antiMatter += amPerSecond/20;
