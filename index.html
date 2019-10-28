@@ -3,26 +3,44 @@
 <head>
   <title> Endless Dimensions </title>
   <style>
-    p{color:red}
-    h1{color:yellow}
-    body{background-color:blue}
+    p{color:white}
+    h1{color:gray}
+    body{background-color:black}
   </style>
 <script>
 var antiMatter = 10;
 var firstDimensionAmount = 0;
+var firstDimensionBought = 0;
+var firstDimensionCost = 10;
+var firstDimensionMultiplier = 1;
+var secondDimensionAmount
 var amPerSecond = 0;
 function buyFirstDimension() {
-if (antiMatter>9.999) {
-antiMatter = antiMatter - 10
+if (Math.round(antiMatter)>firstDimensionCost-1) {
+antiMatter = antiMatter - firstDimensionCost
 firstDimensionAmount++
+if (firstDimensionBought<9)
+firstDimensionBought++
+}
+if(firstDimensionBought=9) {
+firstDimensionBought=0
+firstDimensionCost=firstDimensionCost*10
+firstDimensionMultiplier *= 2
 }
 }
+  function buySecondDimension() {
+if (antiMatter>99.99999) {
+  antiMatter = antiMatter - 100
+  secondDimensionAmount++
+} 
 function gameLoop() {
 antiMatter += amPerSecond/20;
   document.getElementById("AntimatterAmount").innerHTML = "You have " + Math.round(antiMatter*10)/10 + " antimatter.";
-amPerSecond = firstDimensionAmount
-  document.getElementById("FirstDimAmount").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions.";
+amPerSecond = firstDimensionAmount * firstDimensionMultiplier
+  document.getElementById("FirstDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions. They have a " + firstDimMultiplier + "x multiplier. (" + firstDimensionBought; + ")"
+firstDimensionAmount += secondDimensionAmount
 }
+
 setInterval(gameLoop,50);
 </script>
 </head>
@@ -33,9 +51,12 @@ setInterval(gameLoop,50);
   <th><p id="AntimatterAmount">You have 10 antimatter.</p></th>
 </tr>
 <tr>
-  <tc><p id="FirstDimAmount">You have 0 first dimensions.</p></tc>
-  <tc><button type="button" onclick="buyFirstDimension()">Buy a first dimension. Cost: 10 Antimatter</button></tc>
+  <th><p id="FirstDimStats">You have 0 first dimensions.</p></th>
+  <th><button type="button" onclick="buyFirstDimension()">"Buy a first dimension. Cost: " + firstDimensionCost + " antimatter."</button></th>
+</tr>
+<tr>
+  <th><button type="button" onclick="buySecondDimension()">"Buy a second dimension. Cost: 100 antimatter."</button></th>
   </tr>
-  </table>
+</table>
 </body>
 </html>
