@@ -19,12 +19,12 @@ var secondDimensionCost = 100;
 var secondDimensionMultiplier = 1;
 var amPerSecond = 0;
 function buyFirstDimension() {
-if (Math.round(antiMatter)>=firstDimensionCost) {
-antiMatter = antiMatter - firstDimensionCost;
-firstDimensionAmount++;
-if (firstDimensionBought<9)
-firstDimensionBought++;
-}
+     if (Math.round(antiMatter)>=firstDimensionCost) {
+     antiMatter = antiMatter - firstDimensionCost;
+     firstDimensionAmount++;
+       if (firstDimensionBought<9) {
+        firstDimensionBought++;
+        }
 if(firstDimensionBought=9) {
 firstDimensionBought=0;
 firstDimensionCost=firstDimensionCost*10;
