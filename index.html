@@ -50,7 +50,7 @@ antiMatter += amPerSecond/20;
 amPerSecond = firstDimensionAmount * firstDimensionMultiplier;
   document.getElementById("FirstDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions. They have a " + firstDimensionMultiplier + "x multiplier. " + firstDimensionBought + " bought. Cost: " + firstDimensionCost + " antimatter."; 
 firstDimensionAmount += secondDimensionAmount/200
-  document.getElementById("SecondDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " second dimensions. They have a " + secondDimensionMultiplier + "x multiplier. " + secondDimensionBought + " bought. Cost: " + secondDimensionCost + " antimatter."; 
+  document.getElementById("SecondDimStats").innerHTML = "You have " + Math.round(secondDimensionAmount*10)/10 + " second dimensions. They have a " + secondDimensionMultiplier + "x multiplier. " + secondDimensionBought + " bought. Cost: " + secondDimensionCost + " antimatter."; 
 }
 
 setInterval(gameLoop,50);
