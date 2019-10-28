@@ -1,98 +1,204 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
   <title> Endless Dimensions </title>
+
   <style>
+
     p{color:white}
+
     h1{color:gray}
+
     body{background-color:black}
+
   </style>
+
 <script>
+
 var antiMatter = 10;
+
 var firstDimensionAmount = 0;
+
 var firstDimensionBought = 0;
+
 var firstDimensionCost = 10;
+
 var firstDimensionMultiplier = 1;
+
 var secondDimensionAmount = 0;
+
 var secondDimensionBought = 0;
+
 var secondDimensionCost = 100;
+
 var secondDimensionMultiplier = 1;
+
 var thirdDimensionAmount = 0;
+
 var thirdDimensionBought = 0;
+
 var thirdDimensionCost = 1000;
+
 var thirdDimensionMultiplier = 1;
+
 var amPerSecond = 0;
+
 function buyFirstDimension() {
+
 if (Math.round(antiMatter)>=firstDimensionCost) {
+
 antiMatter = antiMatter - firstDimensionCost;
+
 firstDimensionAmount++;
+
 if (firstDimensionBought<10) {
+
 firstDimensionBought++;
+
 }
+
 if(firstDimensionBought==10) {
+
 firstDimensionBought=0;
+
 firstDimensionCost=firstDimensionCost*10;
+
 firstDimensionMultiplier *= 2;
+
 }
+
 }
+
 }
+
   function buySecondDimension() {
+
    if (Math.round(antiMatter)>=secondDimensionCost) { 
+
 antiMatter = antiMatter - secondDimensionCost
+
 secondDimensionAmount++
+
      if (secondDimensionBought<10) {
+
 secondDimensionBought++
+
 }
+
 if (secondDimensionBought==10) {
+
 secondDimensionBought=0
+
 secondDimensionCost=secondDimensionCost*100
+
 secondDimensionMultiplier *= 2
+
 }
+
 }
+
 }
+
 function buyThirdDimension() {
+
    if (Math.round(antiMatter)>=thirdDimensionCost) { 
+
 antiMatter = antiMatter - thirdDimensionCost
+
 thirdDimensionAmount++
+
      if (thirdDimensionBought<10) {
+
 thirdDimensionBought++
+
 }
+
 if (thirdDimensionBought==10) {
+
 thirdDimensionBought=0
-thirdDimensionCost=thirdDimensionCost*1000
+
+thirdDimensionCost=thirdDimensionCost*10000
+
 thirdDimensionMultiplier *= 2
+
 }
+
 }
+
 }
+
 function gameLoop() {
+
 antiMatter += amPerSecond/20;
+
   document.getElementById("AntimatterAmount").innerHTML = "You have " + Math.round(antiMatter*10)/10 + " antimatter.";
+
 amPerSecond = firstDimensionAmount * firstDimensionMultiplier;
+
   document.getElementById("FirstDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions. They have a " + firstDimensionMultiplier + "x multiplier. " + firstDimensionBought + " bought. Cost: " + firstDimensionCost + " antimatter."; 
-firstDimensionAmount += secondDimensionAmount/200
+
+firstDimensionAmount += secondDimensionAmount * secondDimensionMultiplier/40
+
   document.getElementById("SecondDimStats").innerHTML = "You have " + Math.round(secondDimensionAmount*10)/10 + " second dimensions. They have a " + secondDimensionMultiplier + "x multiplier. " + secondDimensionBought + " bought. Cost: " + secondDimensionCost + " antimatter."; 
-secondDimensionAmount += thirdDimensionAmount/200
+
+secondDimensionAmount += thirdDimensionAmount * thirdDimensionMultiplier/60
+
   document.getElementById("ThirdDimStats").innerHTML = "You have " + Math.round(thirdDimensionAmount*10)/10 + " third dimensions. They have a " + thirdDimensionMultiplier + "x multiplier. " + thirdDimensionBought + " bought. Cost: " + thirdDimensionCost + " antimatter."; 
 
+
+
 }
 
+
+
 setInterval(gameLoop,50);
+
 </script>
+
 </head>
+
 <body>
+
 <h1>Endless Dimensions</h1>
+
 <table>
+
 <tr>
+
   <th><p id="AntimatterAmount">You have 10 antimatter.</p></th>
+
 </tr>
+
 <tr>
+
   <th><button type="button" onclick="buyFirstDimension()" >Buy a first dimension. </button></th>
+
   <th><p id="FirstDimStats">You have 0 first dimensions. They have a 1x multiplier. 0 bought. Cost:10</p></th>
+
   </tr>
+
 <tr>
+
   <th><button type="button" onclick="buySecondDimension()">Buy a second dimension. </button></th>
+
   <th><p id="SecondDimStats">You have 0 second dimensions. They have a 1x multiplier. 0 bought. Cost:100</p></th>
+
   </tr>
+
+<tr>
+
+  <th><button type="button" onclick="buyThirdDimension()">Buy a third dimension. </button></th>
+
+  <th><p id="ThirdDimStats">You have 0 third dimensions. They have a 1x multiplier. 0 bought. Cost:1000</p></th>
+
+  </tr>
+
+
 </table>
+
 </body>
+
 </html>
