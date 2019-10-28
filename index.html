@@ -13,7 +13,10 @@ var firstDimensionAmount = 0;
 var firstDimensionBought = 0;
 var firstDimensionCost = 10;
 var firstDimensionMultiplier = 1;
-var secondDimensionAmount
+var secondDimensionAmount = 0;
+var secondDimensionBought = 0;
+var secondDimensionCost = 100;
+var secondDimensionMultiplier = 1;
 var amPerSecond = 0;
 function buyFirstDimension() {
 if (Math.round(antiMatter)>firstDimensionCost-1) {
@@ -29,17 +32,25 @@ firstDimensionMultiplier *= 2
 }
 }
   function buySecondDimension() {
-if (antiMatter>99.99999) {
-  antiMatter = antiMatter - 100
-  secondDimensionAmount++
-} 
-  }
+if (Math.round(antiMatter)>secondDimensionCost-1) {
+antiMatter = antiMatter - secondDimensionCost
+secondDimensionAmount++
+if (secondDimensionBought<9)
+secondDimensionBought++
+}
+if(secondDimensionBought=9) {
+secondDimensionBought=0
+secondDimensionCost=secondDimensionCost*10
+secondDimensionMultiplier *= 2
+}
+}
 function gameLoop() {
 antiMatter += amPerSecond/20;
   document.getElementById("AntimatterAmount").innerHTML = "You have " + Math.round(antiMatter*10)/10 + " antimatter.";
-amPerSecond = firstDimensionAmount * firstDimensionMultiplier
-  document.getElementById("FirstDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions. They have a " + firstDimMultiplier + "x multiplier. (" + firstDimensionBought + "). Cost: " + firstDimensionCost + " antimatter."; 
-firstDimensionAmount += secondDimensionAmount
+amPerSecond = firstDimensionAmount * firstDimensionMultiplier;
+  document.getElementById("FirstDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions. They have a " + firstDimMultiplier + "x multiplier. " + firstDimensionBought + " bought. Cost: " + firstDimensionCost + " antimatter."; 
+firstDimensionAmount += secondDimensionAmount/200
+  document.getElementById("SecondDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " second dimensions. They have a " + secondDimMultiplier + "x multiplier. " + secondDimensionBought + " bought. Cost: " + secondDimensionCost + " antimatter."; 
 }
 
 setInterval(gameLoop,50);
@@ -52,11 +63,12 @@ setInterval(gameLoop,50);
   <th><p id="AntimatterAmount">You have 10 antimatter.</p></th>
 </tr>
 <tr>
-  <th><p id="FirstDimStats">You have 0 first dimensions.</p></th>
   <th><button type="button" onclick="buyFirstDimension()" >Buy a first dimension. </button></th>
-</tr>
+  <th><p id="FirstDimStats">You have 0 first dimensions. They have a 1x multiplier. 0 bought. Cost:10</p></th>
+  </tr>
 <tr>
-  <th><button type="button" onclick="buySecondDimension()">Buy a second dimension. Costs 100 antimatter.</button></th>
+  <th><button type="button" onclick="buySecondDimension()">Buy a second dimension. </button></th>
+  <th><p id="SecondDimStats">You have 0 second dimensions. They have a 1x multiplier. 0 bought. Cost:100</p></th>
   </tr>
 </table>
 </body>
