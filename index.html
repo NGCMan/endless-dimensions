@@ -37,7 +37,8 @@ firstDimensionMultiplier *= 2;
 }
 }
   function buySecondDimension() {
-if (secondDimensionBought<10)
+   if (Math.round(antiMatter)>=secondDimensionCost) {
+if (secondDimensionBought<10) {
 secondDimensionBought++
 }
 if (secondDimensionBought==10) {
@@ -45,11 +46,11 @@ secondDimensionBought=0
 secondDimensionCost=secondDimensionCost*100
 secondDimensionMultiplier *= 2
 }
-}
-}
 if (Math.round(antiMatter)>secondDimensionCost-1) {
 antiMatter = antiMatter - secondDimensionCost
 secondDimensionAmount++
+}
+}
 
 function gameLoop() {
 antiMatter += amPerSecond/20;
