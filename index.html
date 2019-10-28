@@ -19,16 +19,16 @@ var secondDimensionCost = 100;
 var secondDimensionMultiplier = 1;
 var amPerSecond = 0;
 function buyFirstDimension() {
-if (Math.round(antiMatter)>firstDimensionCost-1) {
-antiMatter = antiMatter - firstDimensionCost
-firstDimensionAmount++
+if (Math.round(antiMatter)>=firstDimensionCost) {
+antiMatter = antiMatter - firstDimensionCost;
+firstDimensionAmount++;
 if (firstDimensionBought<9)
-firstDimensionBought++
+firstDimensionBought++;
 }
 if(firstDimensionBought=9) {
-firstDimensionBought=0
-firstDimensionCost=firstDimensionCost*10
-firstDimensionMultiplier *= 2
+firstDimensionBought=0;
+firstDimensionCost=firstDimensionCost*10;
+firstDimensionMultiplier *= 2;
 }
 }
   function buySecondDimension() {
