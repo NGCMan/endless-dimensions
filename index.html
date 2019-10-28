@@ -22,10 +22,10 @@ function buyFirstDimension() {
 if (Math.round(antiMatter)>=firstDimensionCost) {
 antiMatter = antiMatter - firstDimensionCost;
 firstDimensionAmount++;
-if (firstDimensionBought<9) {
+if (firstDimensionBought<10) {
 firstDimensionBought++;
 }
-if(firstDimensionBought==9) {
+if(firstDimensionBought==10) {
 firstDimensionBought=0;
 firstDimensionCost=firstDimensionCost*10;
 firstDimensionMultiplier *= 2;
@@ -33,10 +33,10 @@ firstDimensionMultiplier *= 2;
 }
 }
   function buySecondDimension() {
-if (secondDimensionBought<9)
+if (secondDimensionBought<10)
 secondDimensionBought++
 }
-if(secondDimensionBought=9) {
+if(secondDimensionBought=10) {
 secondDimensionBought=0
 secondDimensionCost=secondDimensionCost*100
 secondDimensionMultiplier *= 2
