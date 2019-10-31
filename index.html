@@ -9,26 +9,8 @@
   </style>
 <script>
 var antiMatter = 10;
-var firstDimensionAmount = 0;
-var firstDimensionBought = 0;
-var firstDimensionCost = 10;
-var firstDimensionMultiplier = 1;
-var secondDimensionAmount = 0;
-var secondDimensionBought = 0;
-var secondDimensionCost = 100;
-var secondDimensionMultiplier = 1;
-var thirdDimensionAmount = 0;
-var thirdDimensionBought = 0;
-var thirdDimensionCost = 1000;
-var thirdDimensionMultiplier = 1;
-var fourthDimensionAmount = 0;
-var fourthDimensionBought = 0;
-var fourthDimensionCost = 10000;
-var fourthDimensionMultiplier = 1;
-var fifthDimensionAmount = 0;
-var fifthDimensionBought = 0;
-var fifthDimensionCost = 100000;
-var fifthDimensionMultiplier = 1;
+var amount = [0, 0, 0, 0, 0]
+var cost = [10, 100, 1000, 1e5, 1e8]
 var amPerSecond = 0;
 function buyFirstDimension() {
 if (Math.round(antiMatter)>=firstDimensionCost) {
