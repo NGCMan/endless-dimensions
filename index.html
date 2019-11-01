@@ -30,6 +30,10 @@ var fifthDimensionAmount = 0;
 var fifthDimensionBought = 0;
 var fifthDimensionCost = 100000;
 var fifthDimensionMultiplier = 1;
+var sixthDimensionAmount = 0;
+var sixthDimensionBought = 0;
+var sixthDimensionCost = 1000000;
+var sixthDimensionMultiplier = 1;
 var amPerSecond = 0;
 
 function buyFirstDimension() {
@@ -48,47 +52,74 @@ firstDimensionMultiplier *= 2;
 }
   function buySecondDimension() {
    if (Math.round(antiMatter)>=secondDimensionCost) { 
-antiMatter = antiMatter - secondDimensionCost
-secondDimensionAmount++
+antiMatter = antiMatter - secondDimensionCost;
+secondDimensionAmount++;
      if (secondDimensionBought<10) {
-secondDimensionBought++
+secondDimensionBought++;
 }
 if (secondDimensionBought==10) {
-secondDimensionBought=0
-secondDimensionCost=secondDimensionCost*100
-secondDimensionMultiplier *= 2
+secondDimensionBought=0;
+secondDimensionCost=secondDimensionCost*100;
+secondDimensionMultiplier *= 2;
 }
 }
 }
 function buyThirdDimension() {
    if (Math.round(antiMatter)>=thirdDimensionCost) { 
-antiMatter = antiMatter - thirdDimensionCost
-thirdDimensionAmount++
+antiMatter = antiMatter - thirdDimensionCost;
+thirdDimensionAmount++;
      if (thirdDimensionBought<10) {
-thirdDimensionBought++
+thirdDimensionBought++;
 }
 if (thirdDimensionBought==10) {
-thirdDimensionBought=0
-thirdDimensionCost=thirdDimensionCost*10000
-thirdDimensionMultiplier *= 2
+thirdDimensionBought=0;
+thirdDimensionCost=thirdDimensionCost*1000;
+thirdDimensionMultiplier *= 2;
 }
 }
 }
 function buyFourthDimension() {
 if (Math.round(antiMatter)>=fourthDimensionCost) {
-antiMatter = antiMatter - fourthDimensionCost
-fourthDimensionAmount++
+antiMatter = antiMatter - fourthDimensionCost;
+fourthDimensionAmount++;
      if (fourthDimensionBought<10) {
-fourthDimensionBought++
+fourthDimensionBought++;
 }
 if (fourthDimensionBought==10) {
-fourthDimensionBought=0
-fourthDimensionCost=fourthDimensionCost*(10000000)
-fourthDimensionMultiplier *= 2
+fourthDimensionBought=0;
+fourthDimensionCost=fourthDimensionCost*10000;
+fourthDimensionMultiplier *= 2;
 }
 }
 }
-
+function buyFifthDimension() {
+if (math.round(antiMatter)>=fifthDimensionCost) {
+antiMatter = antiMatter - fifthDimensionCost;
+fifthDimensionAmount++;
+if (fifthDimensionCost<10) {
+fifthDimensionBought++;
+}
+if (fifthDimensionBought==10) {
+fifthDimensionBought=0;
+fifthDimensionCost=fifthDimensionCost*100000;
+fifthDimensionMultiplier *= 2;
+}
+}
+}
+  function buySixthDimension() {
+if (math.round(antiMatter)>=sixthDimensionCost) {
+antiMatter = antiMatter - sixthDimensionCost;
+sixthDimensionAmount++;
+if (fifthDimensionCost<10) {
+sixthDimensionBought++;
+}
+if (sixthDimensionBought==10) {
+sixthDimensionBought=0;
+sixthDimensionCost=sixthDimensionCost*1000000;
+sixthDimensionMultiplier *= 2;
+}
+}
+}
 function gameLoop() {
 antiMatter += amPerSecond/20;
 antiMatterDisplay = (Math.round((antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter)))))*100)/100).toFixed(2) + "e" + Math.floor(Math.log10(antiMatter));
@@ -99,8 +130,13 @@ firstDimensionAmount += secondDimensionAmount * secondDimensionMultiplier/40
   document.getElementById("SecondDimStats").innerHTML = "You have " + Math.round(secondDimensionAmount*10)/10 + " second dimensions. They have a " + secondDimensionMultiplier + "x multiplier. " + secondDimensionBought + " bought. Cost: " + secondDimensionCost + " antimatter."; 
 secondDimensionAmount += thirdDimensionAmount * thirdDimensionMultiplier/60
   document.getElementById("ThirdDimStats").innerHTML = "You have " + Math.round(thirdDimensionAmount*10)/10 + " third dimensions. They have a " + thirdDimensionMultiplier + "x multiplier. " + thirdDimensionBought + " bought. Cost: " + thirdDimensionCost + " antimatter."; 
-  thirdDimensionAmount += fourthDimensionAmount * fourthDimensionMultiplier/80
+thirdDimensionAmount += fourthDimensionAmount * fourthDimensionMultiplier/80
   document.getElementById("FourthDimStats").innerHTML = "You have " + Math.round(fourthDimensionAmount*10)/10 + " fourth dimensions. They have a " + fourthDimensionMultiplier + "x multiplier. " + fourthDimensionBought + " bought. Cost: " + fourthDimensionCost + " antimatter.";
+fourthDimensionAmount += fifthDimensionAmount * fifthDimensionMultiplier/100
+  document.getElementById("FifthDimStats").innerHTML = "You have " + Math.round(fourthDimensionAmount*10)/10 + " fifth dimensions. They have a " + fourthDimensionMultiplier + "x multiplier. " + fourthDimensionBought + " bought. Cost: " + fourthDimensionCost + " antimatter.";
+fifthDimensionAmount += sixthDimensionAmount * sixthDimensionMultiplier/120
+  document.getElementById("sixthDimStats").innerHTML = "You have " + Math.round(fourthDimensionAmount*10)/10 + " sixth dimensions. They have a " + fourthDimensionMultiplier + "x multiplier. " + fourthDimensionBought + " bought. Cost: " + fourthDimensionCost + " antimatter.";
+
 }
 
 
@@ -127,7 +163,15 @@ setInterval(gameLoop,50);
   </tr>
 <tr>
   <th><button type="button" onclick="buyFourthDimension()">Buy a fourth dimension. </button></th>
-  <th><p id="FourthDimStats">You have 0 third dimensions. They have a 1x multiplier. 0 bought. Cost:1000</p></th>
+  <th><p id="FourthDimStats">You have 0 fourth dimensions. They have a 1x multiplier. 0 bought. Cost:10000</p></th>
+</tr>
+<tr>
+  <th><button type="button" onclick="buyFifthDimension()">Buy a fifth dimension. </button></th>
+  <th><p id="FifthDimStats">You have 0 fifth dimensions. They have a 1x multiplier. 0 bought. Cost:100000</p></th>
+</tr>
+<tr>
+  <th><button type="button" onclick="buySixthDimension()">Buy a sixth dimension. </button></th>
+  <th><p id="SixthDimStats">You have 0 sixth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000</p></th>
 </tr>
 </table>
 </body>
