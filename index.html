@@ -9,6 +9,7 @@
   </style>
 <script>
 var antiMatter = 10;
+var antiMatterDisplay = (antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter))))) + "e" + Math.floor(Math.log10(antiMatter))
 var firstDimensionAmount = 0;
 var firstDimensionBought = 0;
 var firstDimensionCost = 10;
@@ -89,7 +90,7 @@ fourthDimensionMultiplier *= 2
 
 function gameLoop() {
 antiMatter += amPerSecond/20;
-  document.getElementById("AntimatterAmount").innerHTML = "You have " + Math.round(antiMatter*10)/10 + " antimatter.";
+  document.getElementById("AntimatterAmount").innerHTML = "You have " + antMatterDisplay + " antimatter.";
 amPerSecond = firstDimensionAmount * firstDimensionMultiplier;
   document.getElementById("FirstDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions. They have a " + firstDimensionMultiplier + "x multiplier. " + firstDimensionBought + " bought. Cost: " + firstDimensionCost + " antimatter."; 
 firstDimensionAmount += secondDimensionAmount * secondDimensionMultiplier/40
