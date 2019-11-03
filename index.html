@@ -1,179 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title> Endless Dimensions </title>
-  <style>
-    p{color:white}
-    h1{color:gray}
-    body{background-color:black}
-  </style>
-<script>
-var antiMatter = 10;
-var antiMatterDisplay = (antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter))))) + "e" + Math.floor(Math.log10(antiMatter))
-var firstDimensionAmount = 0;
-var firstDimensionBought = 0;
-var firstDimensionCost = 10;
-var firstDimensionMultiplier = 1;
-var secondDimensionAmount = 0;
-var secondDimensionBought = 0;
-var secondDimensionCost = 100;
-var secondDimensionMultiplier = 1;
-var thirdDimensionAmount = 0;
-var thirdDimensionBought = 0;
-var thirdDimensionCost = 1000;
-var thirdDimensionMultiplier = 1;
-var fourthDimensionAmount = 0;
-var fourthDimensionBought = 0;
-var fourthDimensionCost = 10000;
-var fourthDimensionMultiplier = 1;
-var fifthDimensionAmount = 0;
-var fifthDimensionBought = 0;
-var fifthDimensionCost = 100000;
-var fifthDimensionMultiplier = 1;
-var sixthDimensionAmount = 0;
-var sixthDimensionBought = 0;
-var sixthDimensionCost = 1000000;
-var sixthDimensionMultiplier = 1;
-var amPerSecond = 0;
+	<head>
+		<title> Endless Dimensions </title>
+		<style>
+			p{color:white}
+			h1{color:gray}
+			body{background-color:black}
+		</style>
+		<script>
+			var antiMatter = 10;
+			var antiMatterDisplay = (antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter))))) + "e" + Math.floor(Math.log10(antiMatter));
+			class Dimension {
+				constructor(amount, bought, cost, multiplier) {
+					this.amount = amount;
+					this.bought = bought;
+					this.baseCost = cost;
+					this.cost = cost;
+					this.multiplier = multiplier;
+				}
+				
+				buy() {
+					if (Math.round(antiMatter) >= this.cost) {
+						antiMatter -= this.cost;
+						this.amount++;
+						if (this.bought < 10) this.bought++;
+						else if (this.bought == 10) {
+							this.bought = 0;
+							this.cost *= this.baseCost;
+							this.multiplier *= 2;
+						}
+					}
+				}
+			}
+			var firstDimension = new Dimension(0, 0, 10, 1);
+			var secondDimension = new Dimension(0, 0, 100, 1);
+			var thirdDimension = new Dimension(0, 0, 1000, 1);
+			var fourthDimension = new Dimension(0, 0, 10000, 1);
+			var fifthDimension = new Dimension(0, 0, 100000, 1);
+			var sixthDimension = new Dimension(0, 0, 1000000, 1);
+			var amPerSecond = 0;
 
-function buyFirstDimension() {
-if (Math.round(antiMatter)>=firstDimensionCost) {
-antiMatter = antiMatter - firstDimensionCost;
-firstDimensionAmount++;
-if (firstDimensionBought<10) {
-firstDimensionBought++;
-}
-if(firstDimensionBought==10) {
-firstDimensionBought=0;
-firstDimensionCost=firstDimensionCost*10;
-firstDimensionMultiplier *= 2;
-}
-}
-}
-  function buySecondDimension() {
-   if (Math.round(antiMatter)>=secondDimensionCost) { 
-antiMatter = antiMatter - secondDimensionCost;
-secondDimensionAmount++;
-     if (secondDimensionBought<10) {
-secondDimensionBought++;
-}
-if (secondDimensionBought==10) {
-secondDimensionBought=0;
-secondDimensionCost=secondDimensionCost*100;
-secondDimensionMultiplier *= 2;
-}
-}
-}
-function buyThirdDimension() {
-   if (Math.round(antiMatter)>=thirdDimensionCost) { 
-antiMatter = antiMatter - thirdDimensionCost;
-thirdDimensionAmount++;
-     if (thirdDimensionBought<10) {
-thirdDimensionBought++;
-}
-if (thirdDimensionBought==10) {
-thirdDimensionBought=0;
-thirdDimensionCost=thirdDimensionCost*1000;
-thirdDimensionMultiplier *= 2;
-}
-}
-}
-function buyFourthDimension() {
-if (Math.round(antiMatter)>=fourthDimensionCost) {
-antiMatter = antiMatter - fourthDimensionCost;
-fourthDimensionAmount++;
-     if (fourthDimensionBought<10) {
-fourthDimensionBought++;
-}
-if (fourthDimensionBought==10) {
-fourthDimensionBought=0;
-fourthDimensionCost=fourthDimensionCost*10000;
-fourthDimensionMultiplier *= 2;
-}
-}
-}
-function buyFifthDimension() {
-if (math.round(antiMatter)>=fifthDimensionCost) {
-antiMatter = antiMatter - fifthDimensionCost;
-fifthDimensionAmount++;
-if (fifthDimensionCost<10) {
-fifthDimensionBought++;
-}
-if (fifthDimensionBought==10) {
-fifthDimensionBought=0;
-fifthDimensionCost=fifthDimensionCost*100000;
-fifthDimensionMultiplier *= 2;
-}
-}
-}
-  function buySixthDimension() {
-if (math.round(antiMatter)>=sixthDimensionCost) {
-antiMatter = antiMatter - sixthDimensionCost;
-sixthDimensionAmount++;
-if (fifthDimensionCost<10) {
-sixthDimensionBought++;
-}
-if (sixthDimensionBought==10) {
-sixthDimensionBought=0;
-sixthDimensionCost=sixthDimensionCost*1000000;
-sixthDimensionMultiplier *= 2;
-}
-}
-}
-function gameLoop() {
-antiMatter += amPerSecond/20;
-antiMatterDisplay = (Math.round((antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter)))))*100)/100).toFixed(2) + "e" + Math.floor(Math.log10(antiMatter));
-  document.getElementById("AntimatterAmount").innerHTML = "You have " + antiMatterDisplay + " antimatter.";
-amPerSecond = firstDimensionAmount * firstDimensionMultiplier;
-  document.getElementById("FirstDimStats").innerHTML = "You have " + Math.round(firstDimensionAmount*10)/10 + " first dimensions. They have a " + firstDimensionMultiplier + "x multiplier. " + firstDimensionBought + " bought. Cost: " + firstDimensionCost + " antimatter."; 
-firstDimensionAmount += secondDimensionAmount * secondDimensionMultiplier/40
-  document.getElementById("SecondDimStats").innerHTML = "You have " + Math.round(secondDimensionAmount*10)/10 + " second dimensions. They have a " + secondDimensionMultiplier + "x multiplier. " + secondDimensionBought + " bought. Cost: " + secondDimensionCost + " antimatter."; 
-secondDimensionAmount += thirdDimensionAmount * thirdDimensionMultiplier/60
-  document.getElementById("ThirdDimStats").innerHTML = "You have " + Math.round(thirdDimensionAmount*10)/10 + " third dimensions. They have a " + thirdDimensionMultiplier + "x multiplier. " + thirdDimensionBought + " bought. Cost: " + thirdDimensionCost + " antimatter."; 
-thirdDimensionAmount += fourthDimensionAmount * fourthDimensionMultiplier/80
-  document.getElementById("FourthDimStats").innerHTML = "You have " + Math.round(fourthDimensionAmount*10)/10 + " fourth dimensions. They have a " + fourthDimensionMultiplier + "x multiplier. " + fourthDimensionBought + " bought. Cost: " + fourthDimensionCost + " antimatter.";
-fourthDimensionAmount += fifthDimensionAmount * fifthDimensionMultiplier/100
-  document.getElementById("FifthDimStats").innerHTML = "You have " + Math.round(fifthDimensionAmount*10)/10 + " fifth dimensions. They have a " + fifthDimensionMultiplier + "x multiplier. " + fifthDimensionBought + " bought. Cost: " + fifthDimensionCost + " antimatter.";
-fifthDimensionAmount += sixthDimensionAmount * sixthDimensionMultiplier/120
-  document.getElementById("sixthDimStats").innerHTML = "You have " + Math.round(sixthDimensionAmount*10)/10 + " sixth dimensions. They have a " + sixthDimensionMultiplier + "x multiplier. " + sixthDimensionBought + " bought. Cost: " + sixthDimensionCost + " antimatter.";
+			function gameLoop() {
+				antiMatter += amPerSecond / 20;
+				
+				antiMatterDisplay = (Math.round((antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter)))))*100)/100).toFixed(2) + "e" + Math.floor(Math.log10(antiMatter));
+				document.getElementById("AntimatterAmount").innerHTML = "You have " + antiMatterDisplay + " antimatter.";
+				
+				let dims = [firstDimension, secondDimension, thirdDimension, fourthDimension, fifthDimension, sixthDimension];
+				let dim_titles = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth'];
+				
+				amPerSecond = dims[0].amount * dims[0].multiplier;
+				
+				for (let i = 0; i < 6; i++) {
+					document.getElementById('dim' + i + 'stats').innerHTML = 'You have ' + Math.round(dims[i].amount * 10) / 10 + ' ' + dim_titles[i] + ' dimensions. They have a ' + dims[i].multiplier + '&times; multiplier. ' + dims[i].bought + ' bought. Cost: ' + dims[i].cost + ' antimatter.';
+					if (i < 5 ) dims[i].amount += dims[i + 1].amount * dims[i + 1].multiplier / (20 * (i + 1));
+				}
+			}
 
-}
-
-
-setInterval(gameLoop,50);
-</script>
-</head>
-<body>
-<h1>Endless Dimensions</h1>
-<table>
-<tr>
-  <th><p id="AntimatterAmount">You have 10 antimatter.</p></th>
-</tr>
-<tr>
-  <th><button type="button" onclick="buyFirstDimension()" >Buy a first dimension. </button></th>
-  <th><p id="FirstDimStats">You have 0 first dimensions. They have a 1x multiplier. 0 bought. Cost:10</p></th>
-  </tr>
-<tr>
-  <th><button type="button" onclick="buySecondDimension()">Buy a second dimension. </button></th>
-  <th><p id="SecondDimStats">You have 0 second dimensions. They have a 1x multiplier. 0 bought. Cost:100</p></th>
-  </tr>
-<tr>
-  <th><button type="button" onclick="buyThirdDimension()">Buy a third dimension. </button></th>
-  <th><p id="ThirdDimStats">You have 0 third dimensions. They have a 1x multiplier. 0 bought. Cost:1000</p></th>
-  </tr>
-<tr>
-  <th><button type="button" onclick="buyFourthDimension()">Buy a fourth dimension. </button></th>
-  <th><p id="FourthDimStats">You have 0 fourth dimensions. They have a 1x multiplier. 0 bought. Cost:10000</p></th>
-</tr>
-<tr>
-  <th><button type="button" onclick="buyFifthDimension()">Buy a fifth dimension. </button></th>
-  <th><p id="FifthDimStats">You have 0 fifth dimensions. They have a 1x multiplier. 0 bought. Cost:100000</p></th>
-</tr>
-<tr>
-  <th><button type="button" onclick="buySixthDimension()">Buy a sixth dimension. </button></th>
-  <th><p id="SixthDimStats">You have 0 sixth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000</p></th>
-</tr>
-</table>
-</body>
-<iframe src="https://discordapp.com/widget?id=631607645966696468&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+			setInterval(gameLoop, 50);
+		</script>
+	</head>
+	<body>
+	<h1>Endless Dimensions</h1>
+	<table>
+		<tr>
+			<th><p id="AntimatterAmount">You have 10 antimatter.</p></th>
+		</tr>
+		<tr>
+			<th><button type="button" onclick="firstDimension.buy()" >Buy a first dimension. </button></th>
+			<th><p id="dim0stats">You have 0 first dimensions. They have a 1x multiplier. 0 bought. Cost:10</p></th>
+		</tr>
+		<tr>
+			<th><button type="button" onclick="secondDimension.buy()">Buy a second dimension. </button></th>
+			<th><p id="dim1stats">You have 0 second dimensions. They have a 1x multiplier. 0 bought. Cost:100</p></th>
+		</tr>
+		<tr>
+			<th><button type="button" onclick="thirdDimension.buy()">Buy a third dimension. </button></th>
+			<th><p id="dim2stats">You have 0 third dimensions. They have a 1x multiplier. 0 bought. Cost:1000</p></th>
+		</tr>
+		<tr>
+			<th><button type="button" onclick="fourthDimension.buy()">Buy a fourth dimension. </button></th>
+			<th><p id="dim3stats">You have 0 fourth dimensions. They have a 1x multiplier. 0 bought. Cost:10000</p></th>
+		</tr>
+		<tr>
+			<th><button type="button" onclick="fifthDimension.buy()">Buy a fifth dimension. </button></th>
+			<th><p id="dim4stats">You have 0 fifth dimensions. They have a 1x multiplier. 0 bought. Cost:100000</p></th>
+		</tr>
+		<tr>
+			<th><button type="button" onclick="sixthDimension.buy()">Buy a sixth dimension. </button></th>
+			<th><p id="dim5stats">You have 0 sixth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000</p></th>
+		</tr>
+	</table>
+	</body>
+	<iframe src="https://discordapp.com/widget?id=631607645966696468&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 </html>
