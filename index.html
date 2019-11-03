@@ -58,6 +58,15 @@
 			}
 
 			setInterval(gameLoop, 50);
+			
+			var saveGameLoop = window.setInterval(function() {
+				localStorage.setItem('codeSave', JSON.stringify(gameData))
+			}, 15000)
+			
+			var savegame = JSON.parse(localStorage.getItem("codeSave"))
+			if (savegame !== null) {
+				gameData = savegame
+			}
 		</script>
 	</head>
 	<body>
