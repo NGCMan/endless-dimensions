@@ -50,14 +50,14 @@
 				antiMatterDisplay = (Math.round((antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter)))))*100)/100).toFixed(2) + "e" + Math.floor(Math.log10(antiMatter));
 				document.getElementById("AntimatterAmount").innerHTML = "You have " + antiMatterDisplay + " antimatter.";
 				
-				let dims = [firstDimension, secondDimension, thirdDimension, fourthDimension, fifthDimension, sixthDimension];
+				let dims = [firstDimension, secondDimension, thirdDimension, fourthDimension, fifthDimension, sixthDimension, seventhDimension, eighthDimension, ninthDimension, tenthDimension];
 				let dim_titles = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
 				
 				amPerSecond = dims[0].amount * dims[0].multiplier;
 				
-				for (let i = 0; i < 6; i++) {
+				for (let i = 0; i < 10; i++) {
 					document.getElementById('dim' + i + 'stats').innerHTML = 'You have ' + Math.round(dims[i].amount * 10) / 10 + ' ' + dim_titles[i] + ' dimensions. They have a ' + dims[i].multiplier + '&times; multiplier. ' + dims[i].bought + ' bought. Cost: ' + dims[i].cost + ' antimatter.';
-					if (i < 5 ) dims[i].amount += dims[i + 1].amount * dims[i + 1].multiplier / (20 * (i + 1));
+					if (i < 9 ) dims[i].amount += dims[i + 1].amount * dims[i + 1].multiplier / (20 * (i + 1));
 				}
 			}
 
@@ -101,21 +101,21 @@
 		</tr>
 		<tr>
 			<th><button type="button" onclick="sixthDimension.buy()">Buy a sixth dimension. </button></th>
-			<th><p id="dim5stats">You have 0 sixth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000</p></th>
+			<th><p id="dim6stats">You have 0 sixth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000</p></th>
 		</tr>
 			<th><button type="button" onclick="seventhDimension.buy()">Buy a seventh dimension. </button></th>
-			<th><p id="dim6stats">You have 0 seventh dimensions. They have a 1x multiplier. 0 bought. Cost:10000000</p></th>
+			<th><p id="dim7stats">You have 0 seventh dimensions. They have a 1x multiplier. 0 bought. Cost:10000000</p></th>
 		</tr>
 		<tr>
 			<th><button type="button" onclick="eighthDimension.buy()">Buy a eighth dimension. </button></th>
-			<th><p id="dim7stats">You have 0 eighth dimensions. They have a 1x multiplier. 0 bought. Cost:100000000</p></th>
+			<th><p id="dim8stats">You have 0 eighth dimensions. They have a 1x multiplier. 0 bought. Cost:100000000</p></th>
 		</tr>
 			<th><button type="button" onclick="ninthDimension.buy()">Buy a ninth dimension. </button></th>
-			<th><p id="dim6stats">You have 0 ninth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000000</p></th>
+			<th><p id="dim9stats">You have 0 ninth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000000</p></th>
 		</tr>
 		<tr>
 			<th><button type="button" onclick="tenthDimension.buy()">Buy a tenth dimension. </button></th>
-			<th><p id="dim7stats">You have 0 tenth dimensions. They have a 1x multiplier. 0 bought. Cost:10000000000</p></th>
+			<th><p id="dim10stats">You have 0 tenth dimensions. They have a 1x multiplier. 0 bought. Cost:10000000000</p></th>
 		</tr>
 	</table>
 	</body>
