@@ -5,3 +5,4 @@ Developers/Contribiutors:
 - Xenogenisis
 - jacobcoder (Aka The Incremental Nerd)
 - Reinhardt-C
+- Nintendo Gamecube Man (NGC Man)
