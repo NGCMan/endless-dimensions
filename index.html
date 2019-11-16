@@ -23,6 +23,7 @@
 					if (Math.round(antiMatter) >= this.cost) {
 						antiMatter -= this.cost;
 						this.amount++;
+						this.bought++;
 						if (this.bought >= 10){
 							this.bought = 0;
 							this.cost *= this.baseCost;
