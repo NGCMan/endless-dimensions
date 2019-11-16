@@ -62,11 +62,13 @@
 					if (i < 9 ) dims[i].amount += dims[i + 1].amount * dims[i + 1].multiplier / (20 * (i + 1));
 				}
 			}
-			function metaShift()
+			function metaShift(){
 				if (Math.round(antiMatter) >= metaShiftCost) {
 					antiMatter -= metaShiftCost;
 					metaShift++;
-					var metaShiftCost = (Math.pow(10, metaShiftCost))
+					var metaShiftCost = (Math.pow(10, metaShiftCost));
+					}
+			}
 			setInterval(gameLoop, 50);
 			
 			var saveGameLoop = window.setInterval(function() {
