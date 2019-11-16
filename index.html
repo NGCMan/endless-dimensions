@@ -23,8 +23,7 @@
 					if (Math.round(antiMatter) >= this.cost) {
 						antiMatter -= this.cost;
 						this.amount++;
-						if (this.bought < 10) this.bought++;
-						else if (this.bought == 10) {
+						if (this.bought >= 10){
 							this.bought = 0;
 							this.cost *= this.baseCost;
 							this.multiplier *= 2;
@@ -42,15 +41,17 @@
 			var eighthDimension = new Dimension(0, 0, 100000000, 1);
 			var ninthDimension = new Dimension(0, 0, 1000000000, 1);
 			var tenthDimension = new Dimension(0, 0, 10000000000, 1);
+			var antiGrindMulti = (tenthDimension.amount/15)+1;
 			var metaShift = 0;
 			var metaShiftCost = 1e75;
 			var amPerSecond = 0;
 
 			function gameLoop() {
-				antiMatter += amPerSecond / 20;
+				antiMatter += (amPerSecond / 20) * antiGrindMulti;
 				
 				antiMatterDisplay = (Math.round((antiMatter/Math.pow(10, (Math.floor(Math.log10(antiMatter)))))*100)/100).toFixed(2) + "e" + Math.floor(Math.log10(antiMatter));
 				document.getElementById("AntimatterAmount").innerHTML = "You have " + antiMatterDisplay + " antimatter.";
+				document.getElementById("AntimatterMulti").innerHTML = "Your antimatter production multiplier is" + antiGrindMulti + ".";
 				
 				let dims = [firstDimension, secondDimension, thirdDimension, fourthDimension, fifthDimension, sixthDimension, seventhDimension, eighthDimension, ninthDimension, tenthDimension];
 				let dim_titles = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
@@ -86,6 +87,7 @@
 	<table>
 		<tr>
 			<th><p id="AntimatterAmount">You have 10 antimatter.</p></th>
+			<th><p id="AntimatterMulti">Your antimatter production multiplier is 1.</p></th>
 		</tr>
 		<tr>
 			<th><button type="button" onclick="firstDimension.buy()" >Buy a first dimension. </button></th>
