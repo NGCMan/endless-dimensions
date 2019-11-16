@@ -42,6 +42,8 @@
 			var eighthDimension = new Dimension(0, 0, 100000000, 1);
 			var ninthDimension = new Dimension(0, 0, 1000000000, 1);
 			var tenthDimension = new Dimension(0, 0, 10000000000, 1);
+			var metaShift = 0;
+			var metaShiftCost = 1e75;
 			var amPerSecond = 0;
 
 			function gameLoop() {
@@ -60,7 +62,11 @@
 					if (i < 9 ) dims[i].amount += dims[i + 1].amount * dims[i + 1].multiplier / (20 * (i + 1));
 				}
 			}
-
+			function metaShift()
+				if (Math.round(antiMatter) >= metaShiftCost) {
+					antiMatter -= metaShiftCost;
+					metaShift++;
+					var metaShiftCost = (Math.pow(10, metaShiftCost))
 			setInterval(gameLoop, 50);
 			
 			var saveGameLoop = window.setInterval(function() {
@@ -116,6 +122,9 @@
 		<tr>
 			<th><button type="button" onclick="tenthDimension.buy()">Buy a tenth dimension. </button></th>
 			<th><p id="dim9stats">You have 0 tenth dimensions. They have a 1x multiplier. 0 bought. Cost:10000000000</p></th>
+		</tr>
+		<tr>
+			<th><button type="button" onclick="metaShift()">Meta Shift. </button></th>
 		</tr>
 	</table>
 	</body>
