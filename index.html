@@ -42,7 +42,7 @@
 			var eighthDimension = new Dimension(0, 0, 100000000, 1);
 			var ninthDimension = new Dimension(0, 0, 1000000000, 1);
 			var tenthDimension = new Dimension(0, 0, 10000000000, 1);
-			var antiGrindMulti = (tenthDimension.amount/15)+1;
+			var antiGrindMulti = 1;
 			var metaShift = 0;
 			var metaShiftCost = 1e75;
 			var amPerSecond = 0;
@@ -58,6 +58,7 @@
 				let dim_titles = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
 				
 				amPerSecond = dims[0].amount * dims[0].multiplier;
+				antiGrindMulti = (tenthDimension.amount/15)+1;
 				
 				for (let i = 0; i < 10; i++) {
 					document.getElementById('dim' + i + 'stats').innerHTML = 'You have ' + Math.round(dims[i].amount * 10) / 10 + ' ' + dim_titles[i] + ' dimensions. They have a ' + dims[i].multiplier + '&times; multiplier. ' + dims[i].bought + ' bought. Cost: ' + dims[i].cost + ' antimatter.';
