@@ -3,15 +3,15 @@
 	<head>
 		<title> Endless Dimensions </title>
 		<link rel=stylesheet type="text/css" href="stylesheets/main.css"> 
+		<script src="javascripts/break_eternity.min.js"></script>
+		<script src="javascripts/format.js"></script>
 		<script src="javascripts/main.js"></script>
 	</head>
-	<body>
+	<body onload="startInterval();">
 	<h1>Endless Dimensions</h1>
+	<div id="AntimatterAmount"></div>
+	<div id="AntimatterMulti"></div>
 	<table>
-		<tr>
-			<th><p id="AntimatterAmount">You have 10 antimatter.</p></th>
-			<th><p id="AntimatterMulti">Your antimatter production multiplier is 1.</p></th>
-		</tr>
 		<tr>
 			<th><button type="button" onclick="firstDimension.buy()" >Buy a first dimension. </button></th>
 			<th><p id="dim0stats">You have 0 first dimensions. They have a 1x multiplier. 0 bought. Cost:10</p></th>
