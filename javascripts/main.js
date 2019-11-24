@@ -24,6 +24,7 @@ function resetND() {
 var player = getDefaultPlayer()
 resetND()
 let gameLoopIntervalId = 0
+let diffMultiplier = 1
 
 var getNDCostScale = id => Decimal.pow(10, id)
 
@@ -35,7 +36,7 @@ function buyND(id) {
     if (player.ndBoughts[id] >= 10) {
       player.ndBoughts[id] = 0
       player.ndCosts[id] = player.ndCosts[id].times(getNDCostScale(id))
-      player.ndMults[id] = player.ndMults.times(2)
+      player.ndMults[id] = player.ndMults[id].times(2)
     }
   }
 }
@@ -57,14 +58,21 @@ function gameLoop() {
     getAMPerSec()
       .div(20)
       .times(getAntiGrindMulti())
+      .times(diffMultiplier)
   )
 
   document.getElementById("AntimatterAmount").innerHTML = `You have ${shortenMoney(player.antiMatter)} antimatter.`
   document.getElementById("AntimatterMulti").innerHTML = `Your antimatter production multiplier is ${shorten(getAntiGrindMulti())}&times;`
 
   for (let i = 1; i < 11; i++) {
-    document.getElementById(`dim${i}stats`).innerHTML = `You have ${shortenDimensions(player.ndAmounts[i])} ${getDimTitles(i)} dimensions. They have a ${player.ndMults[i]}&times; multiplier. ${player.ndBoughts[i]} bought. Cost: ${shorten(player.ndCosts[i])} antimatter.`
-    if (player.ndOwned.neq(i)) player.ndAmounts[i] = player.ndAmounts[i].plus(player.ndAmounts[i + 1].times(player.ndMults[i + 1]).div(20 * (i + 1)))
+    document.getElementById(`dim${i}stats`).innerHTML = `You have ${shorten(player.ndAmounts[i].floor())} ${getDimTitles(i)} dimensions. They have a ${shorten(player.ndMults[i])}&times; multiplier. ${player.ndBoughts[i]} bought. Cost: ${shorten(player.ndCosts[i])} antimatter.`
+    if (player.ndOwned.neq(i))
+      player.ndAmounts[i] = player.ndAmounts[i].plus(
+        player.ndAmounts[i + 1]
+          .times(player.ndMults[i + 1])
+          .div(20 * (i + 1))
+          .times(diffMultiplier)
+      )
   }
 }
 function metaShift() {
