@@ -4,6 +4,7 @@
 		<title> Endless Dimensions </title>
 		<link rel=stylesheet type="text/css" href="stylesheets/main.css"> 
 		<script src="javascripts/break_eternity.min.js"></script>
+		<script src="javascripts/lodash.min.js"></script>
 		<script src="javascripts/format.js"></script>
 		<script src="javascripts/main.js"></script>
 	</head>
@@ -13,47 +14,45 @@
 	<div id="AntimatterMulti"></div>
 	<table>
 		<tr>
-			<th><button type="button" onclick="firstDimension.buy()" >Buy a first dimension. </button></th>
-			<th><p id="dim0stats">You have 0 first dimensions. They have a 1x multiplier. 0 bought. Cost:10</p></th>
+			<th><button type="button" onclick="buyND(1)" >Buy a first dimension. </button></th>
+			<th><p id="dim1stats">You have 0 first dimensions. They have a 1x multiplier. 0 bought. Cost:10</p></th>
 		</tr>
 		<tr>
-			<th><button type="button" onclick="secondDimension.buy()">Buy a second dimension. </button></th>
-			<th><p id="dim1stats">You have 0 second dimensions. They have a 1x multiplier. 0 bought. Cost:100</p></th>
+			<th><button type="button" onclick="buyND(2)">Buy a second dimension. </button></th>
+			<th><p id="dim2stats">You have 0 second dimensions. They have a 1x multiplier. 0 bought. Cost:100</p></th>
 		</tr>
 		<tr>
-			<th><button type="button" onclick="thirdDimension.buy()">Buy a third dimension. </button></th>
-			<th><p id="dim2stats">You have 0 third dimensions. They have a 1x multiplier. 0 bought. Cost:1000</p></th>
+			<th><button type="button" onclick="buyND(3)">Buy a third dimension. </button></th>
+			<th><p id="dim3stats">You have 0 third dimensions. They have a 1x multiplier. 0 bought. Cost:1000</p></th>
 		</tr>
 		<tr>
-			<th><button type="button" onclick="fourthDimension.buy()">Buy a fourth dimension. </button></th>
-			<th><p id="dim3stats">You have 0 fourth dimensions. They have a 1x multiplier. 0 bought. Cost:10000</p></th>
+			<th><button type="button" onclick="buyND(4)">Buy a fourth dimension. </button></th>
+			<th><p id="dim4stats">You have 0 fourth dimensions. They have a 1x multiplier. 0 bought. Cost:10000</p></th>
 		</tr>
 		<tr>
-			<th><button type="button" onclick="fifthDimension.buy()">Buy a fifth dimension. </button></th>
-			<th><p id="dim4stats">You have 0 fifth dimensions. They have a 1x multiplier. 0 bought. Cost:100000</p></th>
+			<th><button type="button" onclick="buyND(5)">Buy a fifth dimension. </button></th>
+			<th><p id="dim5stats">You have 0 fifth dimensions. They have a 1x multiplier. 0 bought. Cost:100000</p></th>
 		</tr>
 		<tr>
-			<th><button type="button" onclick="sixthDimension.buy()">Buy a sixth dimension. </button></th>
-			<th><p id="dim5stats">You have 0 sixth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000</p></th>
+			<th><button type="button" onclick="buyND(6)">Buy a sixth dimension. </button></th>
+			<th><p id="dim6stats">You have 0 sixth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000</p></th>
 		</tr>
-			<th><button type="button" onclick="seventhDimension.buy()">Buy a seventh dimension. </button></th>
-			<th><p id="dim6stats">You have 0 seventh dimensions. They have a 1x multiplier. 0 bought. Cost:10000000</p></th>
-		</tr>
-		<tr>
-			<th><button type="button" onclick="eighthDimension.buy()">Buy a eighth dimension. </button></th>
-			<th><p id="dim7stats">You have 0 eighth dimensions. They have a 1x multiplier. 0 bought. Cost:100000000</p></th>
-		</tr>
-			<th><button type="button" onclick="ninthDimension.buy()">Buy a ninth dimension. </button></th>
-			<th><p id="dim8stats">You have 0 ninth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000000</p></th>
+			<th><button type="button" onclick="buyND(7)">Buy a seventh dimension. </button></th>
+			<th><p id="dim7stats">You have 0 seventh dimensions. They have a 1x multiplier. 0 bought. Cost:10000000</p></th>
 		</tr>
 		<tr>
-			<th><button type="button" onclick="tenthDimension.buy()">Buy a tenth dimension. </button></th>
-			<th><p id="dim9stats">You have 0 tenth dimensions. They have a 1x multiplier. 0 bought. Cost:10000000000</p></th>
+			<th><button type="button" onclick="buyND(8)">Buy a eighth dimension. </button></th>
+			<th><p id="dim8stats">You have 0 eighth dimensions. They have a 1x multiplier. 0 bought. Cost:100000000</p></th>
+		</tr>
+			<th><button type="button" onclick="buyND(9)">Buy a ninth dimension. </button></th>
+			<th><p id="dim9stats">You have 0 ninth dimensions. They have a 1x multiplier. 0 bought. Cost:1000000000</p></th>
 		</tr>
 		<tr>
-			<th><button type="button" onclick="metaShift()">Meta Shift. </button></th>
+			<th><button type="button" onclick="buyND(10)">Buy a tenth dimension. </button></th>
+			<th><p id="dim10stats">You have 0 tenth dimensions. They have a 1x multiplier. 0 bought. Cost:10000000000</p></th>
 		</tr>
 	</table>
+	<div><button type="button" onclick="metaShift()">Meta Shift. </button></div>
 	</body>
 	<iframe src="https://discordapp.com/widget?id=631607645966696468&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 </html>
