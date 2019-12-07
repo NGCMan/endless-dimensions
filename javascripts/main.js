@@ -74,6 +74,56 @@ function gameLoop() {
           .times(diffMultiplier)
       )
   }
+  if (player.antiMatter>=player.ndCosts[1].mag) {
+document.getElementById("dim1").className = "unlocked";
+} else {
+document.getElementById("dim1").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[2].mag) {
+document.getElementById("dim2").className = "unlocked";
+} else {
+document.getElementById("dim2").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[3].mag) {
+document.getElementById("dim3").className = "unlocked";
+} else {
+document.getElementById("dim3").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[4].mag) {
+document.getElementById("dim4").className = "unlocked";
+} else {
+document.getElementById("dim4").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[5].mag) {
+document.getElementById("dim5").className = "unlocked";
+} else {
+document.getElementById("dim5").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[6].mag) {
+document.getElementById("dim6").className = "unlocked";
+} else {
+document.getElementById("dim6").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[7].mag) {
+document.getElementById("dim7").className = "unlocked";
+} else {
+document.getElementById("dim7").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[8].mag) {
+document.getElementById("dim8").className = "unlocked";
+} else {
+document.getElementById("dim8").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[9].mag) {
+document.getElementById("dim9").className = "unlocked";
+} else {
+document.getElementById("dim9").className = "locked";
+}
+if (player.antiMatter>=player.ndCosts[10].mag) {
+document.getElementById("dim10").className = "unlocked";
+} else {
+document.getElementById("dim10").className = "locked";
+}
 }
 function metaShift() {
   if (player.antiMatter.gte(player.metaShiftCost)) {
